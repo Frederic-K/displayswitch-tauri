@@ -1,0 +1,117 @@
+/* Apparence de la fenêtre, d'après le design system « Display Switch » :
+   un thème clair et neutre, une seule police (Ubuntu Light, comme la version egui). */
+
+@font-face {
+  font-family: "Ubuntu Light";
+  src: url("./assets/fonts/Ubuntu-Light.ttf") format("truetype");
+}
+
+:root {
+  /* Couleurs. */
+  --bg: #f8f8f8;
+  --surface: #ffffff;
+  --border: #dedede;
+  --border-control: #8c8c8c;
+  --ink: #1f1f1f;
+  --ink-muted: #5c5c5c;
+  --control: #ffffff;
+  --control-hover: #f0f0f0;
+  --control-active: #e4e4e4;
+  --accent: #1a5fb4;
+  --success: #1e7b34;
+
+  /* Espacements, rayons et hauteurs. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --control-lg: 36px;
+  --control-sm: 28px;
+
+  /* Tailles de texte. */
+  --text-heading: 18px;
+  --text-body: 13px;
+  --text-small: 12px;
+  --text-monitor-name: 14px;
+  --text-button-lg: 14px;
+  --text-button: 13px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+/* Texte courant en gris, non sélectionnable comme dans une application native. */
+body {
+  background: var(--bg);
+  color: var(--ink-muted);
+  font-family: "Ubuntu Light", sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.3;
+  user-select: none;
+  cursor: default;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--text-heading);
+  font-weight: normal;
+}
+
+p {
+  margin: 0;
+}
+
+/* Deux boutons de même largeur sur toute la ligne. */
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+/* Boutons : repos, survol, puis pressé ou focus clavier. Petit format par défaut. */
+button {
+  height: var(--control-sm);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-sm);
+  background: var(--control);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--text-button);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button:hover {
+  background: var(--control-hover);
+}
+
+button:active,
+button:focus-visible {
+  background: var(--control-active);
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+button.large {
+  height: var(--control-lg);
+  border-radius: var(--radius-md);
+  font-size: var(--text-button-lg);
+}
